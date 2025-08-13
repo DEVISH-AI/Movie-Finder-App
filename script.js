@@ -121,7 +121,7 @@ const genreMovies = {
   scifi: ['Star Wars', 'Blade Runner', 'The Matrix', 'Interstellar', 'Avatar']
 };
 
-// Cache functions
+
 function getCachedGenre(genre) {
   const cached = localStorage.getItem(`genre_${genre}`);
   if (cached) {
@@ -142,7 +142,7 @@ function cacheGenreData(genre, movies) {
   }));
 }
 
-// Main fetch function
+
 function fetchGenreMovies(genre) {
   const cached = getCachedGenre(genre);
   if (cached) {
@@ -152,7 +152,7 @@ function fetchGenreMovies(genre) {
     return;
   }
   
-  // Show loading
+  
   document.getElementById('genreLoading').classList.remove('hidden');
   document.querySelectorAll('.genre-btn').forEach(btn => btn.disabled = true);
   document.querySelector(".trending-section").style.display = "none";
@@ -182,7 +182,6 @@ function fetchGenreMovies(genre) {
         return [];
       })
       .catch(() => {
-        // Suppress console errors for failed requests
         return [];
       })
   );
@@ -236,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Load saved theme on page load
+  
     document.addEventListener('DOMContentLoaded', function() {
         const savedTheme = localStorage.getItem('theme');
         const themeIcon = document.getElementById('theme-icon');
@@ -249,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //Triple Click on Logo/Title (Most Sneaky!)
+    //Triple Click on Logo/Title
 let clickCount = 0;
 let clickTimer = null;
 
@@ -264,7 +263,7 @@ document.querySelector('.hero h1').addEventListener('click', function() {
         clearTimeout(clickTimer);
         clickCount = 0;
         
-        // Clear cache
+      
         Object.keys(localStorage).forEach(key => {
             if (key.startsWith("genre_")) {
                 localStorage.removeItem(key);
@@ -298,7 +297,7 @@ document.querySelector('.hero h1').addEventListener('click', function() {
     }
 });
 
-// Add CSS for notification animation
+// CSS for notification animation
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeOut {
@@ -315,6 +314,7 @@ document.head.appendChild(style);
 //       localStorage.removeItem(key);
 //     }
 //   });
-//   alert("🔥 Genre cache cleared, babe!");
+//   alert("🔥 Genre cache cleared");
 // });
+
 
